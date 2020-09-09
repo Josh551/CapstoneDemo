@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { registerAdmin } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 
-class Register extends Component {
+class ARegister extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,7 +21,7 @@ class Register extends Component {
   }
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/alogin");
     }
   }
 
@@ -38,14 +38,14 @@ class Register extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const newUser = {
+    const newAdmin = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
     };
 
-    this.props.registerUser(newUser, this.props.history);
+    this.props.registerAdmin(newAdmin, this.props.history);
   }
 
   render() {
@@ -73,7 +73,6 @@ class Register extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                 />
                 <TextFieldGroup
                   placeholder="Password"
@@ -101,8 +100,8 @@ class Register extends Component {
   }
 }
 
-Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
+ARegister.propTypes = {
+  registerAdmin: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
@@ -112,4 +111,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(mapStateToProps, { registerAdmin })(
+  withRouter(ARegister)
+);

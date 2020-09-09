@@ -6,15 +6,24 @@
   color: black;
   text-align: center;
 }
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 img {
   width: 100%;
 }
-.container {
-  width: 100%;
-}
+
 .landing {
   position: relative;
-  background: url("./img/showcase.jpg") no-repeat;
+  background-color: #242424;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -46,4 +55,7 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+.signin {
+  padding-top: 20px;
 }

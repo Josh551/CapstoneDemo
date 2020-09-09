@@ -17,8 +17,7 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Edureka</h1>
-                <p className="lead"> An easy efficent attendance system</p>
+                <h1 className="display-3 mb-4">Welcome</h1>
                 <hr />
                 <Link to="/register" className="btn btn-lg btn-info mr-2">
                   Sign Up
@@ -28,6 +27,11 @@ class Landing extends Component {
                 </Link>
               </div>
             </div>
+          </div>
+          <div class="container signin col-md-12 text-center">
+            <p>
+              Not a user? <a href="/alogin">Click here</a>
+            </p>
           </div>
         </div>
       </div>

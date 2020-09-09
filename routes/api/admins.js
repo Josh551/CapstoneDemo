@@ -110,6 +110,21 @@ router.get(
   }
 );
 
+router.get("/uv", (req, res) => {
+  const errors = {};
+
+  User.find()
+    .then((users) => {
+      if (!users) {
+        errors.user = "There are no users";
+        return res.status(404).json(errors);
+      }
+
+      res.json(users);
+    })
+    .catch((err) => res.status(404).json({ user: "There are no users" }));
+});
+
 router.get("/uv/:id", (req, res) => {
   passport.authenticate("jwt", { session: false }),
     User.findById(req.params.id)
