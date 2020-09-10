@@ -18,7 +18,7 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
-              <p>j{user.stat}j</p>
+              {(user.stat = true ? dashboardContent : "User not verified")}
             </div>
           </div>
         </div>
@@ -34,8 +34,8 @@ Dashboard.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile,
-  user: state.auth,
+  auth: state.auth,
+  user: state.user,
 });
 
 export default connect(mapStateToProps, { getUser })(Dashboard);
