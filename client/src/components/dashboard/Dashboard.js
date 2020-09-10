@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/profileActions";
+import { getUser } from "../../actions/userActions";
 
 class Dashboard extends Component {
   render() {
-    const { user } = this.props.auth;
-    user.stat = false;
+    const { user } = this.props.user;
+
     let dashboardContent;
 
     dashboardContent = <h4>Welcome,{user.name}</h4>;
@@ -18,7 +18,7 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
-              {(user.stat = true ? dashboardContent : "User not verified")}
+              <p>j{user.stat}j</p>
             </div>
           </div>
         </div>
@@ -28,14 +28,14 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
-  auth: state.auth,
+  user: state.auth,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getUser })(Dashboard);

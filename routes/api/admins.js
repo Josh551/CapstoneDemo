@@ -138,7 +138,7 @@ router.get("/uv/:id", (req, res) => {
 router.post("/uv/:id", (req, res) => {
   passport.authenticate("jwt", { session: false }),
     User.findById(req.params.id).then((user) => {
-      user.stat = "true";
+      user.stat = true;
       user.save().then((user) => res.json(user));
     });
 });

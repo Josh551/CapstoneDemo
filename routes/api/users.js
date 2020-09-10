@@ -93,9 +93,10 @@ router.post("/login", (req, res) => {
           }
         );
       }
-      if (stat) {
-        router.redirect("/status");
+      if (stat == true) {
+        user.stat = stat;
       } else {
+        router.redirect("/status");
         errors.stat = "Not verified";
         return res.status(400).json(errors);
       }
