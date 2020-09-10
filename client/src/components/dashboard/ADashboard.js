@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getUsers } from "../../actions/userActions";
+import UserItem from "./UserItem";
 
 class ADashboard extends Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class ADashboard extends Component {
     let userItems;
 
     if (users) {
-      userItems = <h1> USERS FOUND</h1>;
+      userItems = users.map((user) => <UserItem key={user._id} user={user} />);
     } else {
       userItems = <h4>No users found</h4>;
     }
@@ -25,10 +26,18 @@ class ADashboard extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4 text-center">Developer Profiles</h1>
-              <p className="lead text-center">
-                Browse and connect with developers
-              </p>
+              <h1 className="display-4 text-center">User Profiles</h1>
+              <div className="row">
+                <div className="name-item col-2">
+                  <p>Name</p>
+                </div>
+                <div className="email-item col-2">
+                  <p>Email</p>
+                </div>
+                <div className="col-2">
+                  <p>Verification</p>
+                </div>
+              </div>
               {userItems}
             </div>
           </div>

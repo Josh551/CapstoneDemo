@@ -26,7 +26,7 @@ router.post("/register", (req, res) => {
       errors.email = "Email already exists";
       return res.status(400).json(errors);
     } else {
-      const stat = "false";
+      stat = false;
       const avatar = gravatar.url(req.body.email, {
         s: "200",
         r: "pg",
@@ -93,10 +93,10 @@ router.post("/login", (req, res) => {
           }
         );
       }
-      if (stat != "true") {
+      if (stat) {
         router.redirect("/status");
       } else {
-        errors.password = "Password incorrect";
+        errors.stat = "Not verified";
         return res.status(400).json(errors);
       }
     });

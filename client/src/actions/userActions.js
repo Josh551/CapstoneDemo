@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_USERS, GET_USER } from "./types";
+import { GET_USERS, GET_USER, GET_ERRORS } from "./types";
 
 export const getUsers = () => (dispatch) => {
   axios
@@ -31,6 +31,17 @@ export const getUser = (handle) => (dispatch) => {
       dispatch({
         type: GET_USER,
         payload: null,
+      })
+    );
+};
+export const VerifyUser = (id) => (dispatch) => {
+  axios
+    .post(`/api/admins/uv/${id}`)
+    .then((res) => dispatch(getUsers()))
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
       })
     );
 };

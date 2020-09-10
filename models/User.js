@@ -19,7 +19,8 @@ const UserSchema = new Schema({
     type: String,
   },
   stat: {
-    type: String,
+    type: Boolean,
+    required: false,
   },
   date: {
     type: Date,

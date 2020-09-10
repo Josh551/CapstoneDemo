@@ -7,7 +7,7 @@ import { getCurrentProfile } from "../../actions/profileActions";
 class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
-    let isVerified = user.stat;
+    user.stat = false;
     let dashboardContent;
 
     dashboardContent = <h4>Welcome,{user.name}</h4>;
@@ -18,7 +18,7 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
-              {isVerified ? dashboardContent : "User not verified"}
+              {(user.stat = true ? dashboardContent : "User not verified")}
             </div>
           </div>
         </div>
