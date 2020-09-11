@@ -18,9 +18,10 @@ export const getUsers = () => (dispatch) => {
       })
     );
 };
-export const getUser = (handle) => (dispatch) => {
+
+export const getUser = () => (dispatch) => {
   axios
-    .get(`/api/admins/uv/${handle}`)
+    .get(`/api/users/current`)
     .then((res) =>
       dispatch({
         type: GET_USER,

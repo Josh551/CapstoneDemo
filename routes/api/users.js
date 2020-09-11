@@ -93,13 +93,6 @@ router.post("/login", (req, res) => {
           }
         );
       }
-      if (stat == true) {
-        user.stat = stat;
-      } else {
-        router.redirect("/status");
-        errors.stat = "Not verified";
-        return res.status(400).json(errors);
-      }
     });
   });
 });
@@ -112,10 +105,10 @@ router.get(
       id: req.user.id,
       name: req.user.name,
       email: req.user.email,
+      stat: req.user.stat,
     });
   }
 );
-
 router.get("/status", (req, res) => {
   errors.email = "User not verified by admin";
   return res.status(400).json(errors);

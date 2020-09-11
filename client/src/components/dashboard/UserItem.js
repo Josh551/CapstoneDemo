@@ -21,9 +21,7 @@ class UserItem extends Component {
           <div className="email-item col-2">
             <p>{user.email}</p>
           </div>
-          <div className="email-item col-2">
-            <p>{user.stat}</p>
-          </div>
+
           <button
             onClick={this.onVerifyClick.bind(this, user._id)}
             type="button"

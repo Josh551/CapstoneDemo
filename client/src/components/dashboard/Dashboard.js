@@ -5,12 +5,20 @@ import { connect } from "react-redux";
 import { getUser } from "../../actions/userActions";
 
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.getUser();
+    fetch("/api/users/current").then((res) => console.log(res.json()));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user.user === null) {
+      this.props.history.push("/not-found");
+    }
+  }
+
   render() {
     const { user } = this.props.user;
-
-    let dashboardContent;
-
-    dashboardContent = <h4>Welcome,{user.name}</h4>;
+    let dashboardContent = <h1>Welcome,{user.name}</h1>;
 
     return (
       <div className="dashboard">
@@ -18,6 +26,7 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
+
               {(user.stat = true ? dashboardContent : "User not verified")}
             </div>
           </div>
@@ -34,8 +43,8 @@ Dashboard.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
   user: state.user,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getUser })(Dashboard);
