@@ -20,7 +20,6 @@ const UserSchema = new Schema({
   },
   stat: {
     type: Boolean,
-    required: false,
   },
   date: {
     type: Date,

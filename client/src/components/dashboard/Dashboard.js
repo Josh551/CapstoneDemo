@@ -7,7 +7,6 @@ import { getUser } from "../../actions/userActions";
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getUser();
-    fetch("/api/users/current").then((res) => console.log(res.json()));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -18,16 +17,19 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.props.user;
-    let dashboardContent = <h1>Welcome,{user.name}</h1>;
-
+    let dashboardContent;
+    if (user.stat == false) {
+      dashboardContent = "User not verified.Wait for the admin to verify you.";
+    } else {
+      dashboardContent = <h1>Welcome,{user.name}</h1>;
+    }
     return (
       <div className="dashboard">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
-
-              {(user.stat = true ? dashboardContent : "User not verified")}
+              {dashboardContent}
             </div>
           </div>
         </div>
