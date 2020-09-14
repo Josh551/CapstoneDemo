@@ -3,12 +3,17 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import { Snackbar } from "./Snackbar";
 import { VerifyUser } from "../../actions/userActions";
 class UserItem extends Component {
   onVerifyClick(id) {
     this.props.VerifyUser(id);
   }
+  snackbarRef = React.createRef();
 
+  _showSnackbarHandler = () => {
+    this.snackbarRef.current.openSnackBar("User has been verified");
+  };
   render() {
     const { user } = this.props;
 
@@ -23,12 +28,16 @@ class UserItem extends Component {
           </div>
 
           <button
-            onClick={this.onVerifyClick.bind(this, user._id)}
+            onClick={
+              (this.onVerifyClick.bind(this, user._id),
+              this._showSnackbarHandler)
+            }
             type="button"
-            className="btn-lg btn-info mr-2"
+            className="btn btn-light mr-1"
           >
-            Verify
+            <i className="text-secondary fas fa-check" />
           </button>
+          <Snackbar ref={this.snackbarRef} />
         </div>
       </div>
     );
