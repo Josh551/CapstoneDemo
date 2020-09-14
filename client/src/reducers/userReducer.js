@@ -1,4 +1,4 @@
-import { GET_USERS, GET_USER, GET_STAT } from "../actions/types";
+import { GET_USERS, GET_USER, USER_LOADING } from "../actions/types";
 
 const initialState = {
   users: [],
@@ -7,6 +7,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case USER_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
     case GET_USERS:
       return {
         ...state,

@@ -9,3 +9,4 @@ export const PROFILE_NOT_FOUND = "PROFILE_NOT_FOUND";
 export const CLEAR_CURRENT_PROFILE = "CLEAR_CURRENT_PROFILE";
 export const GET_PROFILES = "GET_PROFILES";
 export const GET_STAT = "GET_STAT";
+export const USER_LOADING = "USER_LOADING";

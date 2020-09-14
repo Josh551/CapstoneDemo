@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_USERS, GET_USER, GET_ERRORS } from "./types";
+import { GET_USERS, GET_USER, GET_ERRORS, USER_LOADING } from "./types";
 
 export const getUsers = () => (dispatch) => {
   axios
@@ -20,6 +20,7 @@ export const getUsers = () => (dispatch) => {
 };
 
 export const getUser = () => (dispatch) => {
+  dispatch(setUserLoading());
   axios
     .get(`/api/users/current`)
     .then((res) =>
@@ -34,6 +35,12 @@ export const getUser = () => (dispatch) => {
         payload: null,
       })
     );
+};
+
+export const setUserLoading = () => {
+  return {
+    type: USER_LOADING,
+  };
 };
 export const VerifyUser = (id) => (dispatch) => {
   axios

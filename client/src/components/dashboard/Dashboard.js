@@ -3,22 +3,19 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUser } from "../../actions/userActions";
+import Spinner from "../common/Spinner";
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getUser();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user.user === null) {
-      this.props.history.push("/not-found");
-    }
-  }
-
   render() {
-    const { user } = this.props.user;
+    const { user, loading } = this.props.user;
     let dashboardContent;
-    if (user.stat == false) {
+    if (user === null || loading) {
+      dashboardContent = <Spinner />;
+    } else if (user.stat == false) {
       dashboardContent = "User not verified.Wait for the admin to verify you.";
     } else {
       dashboardContent = <h1>Welcome,{user.name}</h1>;
