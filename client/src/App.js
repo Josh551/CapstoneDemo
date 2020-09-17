@@ -12,9 +12,10 @@ import ALogin from "./components/auth/ALogin";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/common/PrivateRoute";
-
+import AdminDashboard from "./components/dashboard/AdminDashboard";
+import AddUser from "./components/dashboard/AddUser";
+import VerifyUser from "./components/dashboard/VerifyUser";
 import "./App.css";
-import ADashboard from "./components/dashboard/ADashboard";
 
 class App extends Component {
   render() {
@@ -36,7 +37,25 @@ class App extends Component {
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/adashboard" component={ADashboard} />
+                <PrivateRoute
+                  exact
+                  path="/adashboard"
+                  component={AdminDashboard}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-user-details"
+                  component={AddUser}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/verify-user"
+                  component={VerifyUser}
+                />
               </Switch>
             </div>
             <Footer />

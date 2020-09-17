@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { getUsers } from "../../actions/userActions";
 import UserItem from "./UserItem";
 
-class ADashboard extends Component {
+class VerifyUser extends Component {
   componentDidMount() {
     this.props.getUsers();
   }
@@ -47,7 +47,7 @@ class ADashboard extends Component {
   }
 }
 
-ADashboard.propTypes = {
+VerifyUser.propTypes = {
   auth: PropTypes.object.isRequired,
   getUsers: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
@@ -58,4 +58,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { getUsers })(ADashboard);
+export default connect(mapStateToProps, { getUsers })(VerifyUser);

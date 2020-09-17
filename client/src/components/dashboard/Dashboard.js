@@ -15,7 +15,7 @@ class Dashboard extends Component {
     let dashboardContent;
     if (user === null || loading) {
       dashboardContent = <Spinner />;
-    } else if (user.stat == false) {
+    } else if (user.stat === false) {
       dashboardContent = "User not verified.Wait for the admin to verify you.";
     } else {
       dashboardContent = <h1>Welcome,{user.name}</h1>;
