@@ -24,7 +24,7 @@ class AdminDashboard extends Component {
           Welcome <Link to={`/user/${user.id}`}>{user.name}</Link>
         </p>
         <div>
-          <Link to="/add-user-details" className="btn btn-lg btn-info">
+          <Link to="/add-user" className="btn btn-lg btn-info">
             Add User Details
           </Link>
         </div>

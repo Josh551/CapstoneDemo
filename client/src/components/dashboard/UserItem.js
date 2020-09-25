@@ -37,6 +37,13 @@ class UserItem extends Component {
           >
             <i className="text-secondary fas fa-check" />
           </button>
+          <button
+            onClick={this.onVerifyClick.bind(this, user._id)}
+            type="button"
+            className="btn btn-light mr-1"
+          >
+            Add User Details
+          </button>
           <Snackbar ref={this.snackbarRef} />
         </div>
       </div>

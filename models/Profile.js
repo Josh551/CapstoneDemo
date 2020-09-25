@@ -22,26 +22,25 @@ const ProfileSchema = new Schema({
     type: String,
     required: true,
   },
-  skills: {
+  branch: {
     type: [String],
-    required: true,
+  },
+  designation: {
+    type: [String],
   },
   experience: [
     {
       title: {
         type: String,
-        required: true,
       },
       company: {
         type: String,
-        required: true,
       },
       location: {
         type: String,
       },
       from: {
         type: Date,
-        required: true,
       },
       to: {
         type: Date,

@@ -16,6 +16,7 @@ import AdminDashboard from "./components/dashboard/AdminDashboard";
 import AddUser from "./components/dashboard/AddUser";
 import VerifyUser from "./components/dashboard/VerifyUser";
 import "./App.css";
+import AddUserDetails from "./components/dashboard/AddUserDetails";
 
 class App extends Component {
   render() {
@@ -43,11 +44,12 @@ class App extends Component {
                   component={AdminDashboard}
                 />
               </Switch>
+              <Route exact path="/add-user" component={AddUser} />
               <Switch>
                 <PrivateRoute
                   exact
                   path="/add-user-details"
-                  component={AddUser}
+                  component={AddUserDetails}
                 />
               </Switch>
               <Switch>

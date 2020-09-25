@@ -53,3 +53,16 @@ export const VerifyUser = (id) => (dispatch) => {
       })
     );
 };
+
+// Create Profile
+export const createProfile = (id) => (dispatch) => {
+  axios
+    .post(`/api/profile/user/${id}`)
+    .then((res) => dispatch(getUsers()))
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+};
