@@ -26,10 +26,9 @@ export const getProfiles = () => (dispatch) => {
     );
 };
 // Get current profile
-export const getCurrentProfile = () => (dispatch) => {
-  dispatch(setProfileLoading());
+export const getProfile = (id) => (dispatch) => {
   axios
-    .get("/api/profile")
+    .get(`/api/profile/user/${id}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,

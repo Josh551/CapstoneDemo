@@ -13,8 +13,6 @@ class AddUserDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayTeacherInputs: false,
-      displayStudentInputs: false,
       handle: "",
       InstitutionId: "",
       location: "",
@@ -39,14 +37,14 @@ class AddUserDetails extends Component {
 
     const profileData = {
       handle: this.state.handle,
+      status: this.state.status,
       InstitutionId: this.state.InstitutionId,
       location: this.state.location,
       branch: this.state.branch,
       designation: this.state.designation,
-      status: this.state.status,
     };
 
-    this.props.createProfile(profileData, this.props.history);
+    this.props.createProfile(profileData);
   }
 
   onChange(e) {
@@ -79,14 +77,12 @@ class AddUserDetails extends Component {
                   value={this.state.handle}
                   onChange={this.onChange}
                   error={errors.handle}
-                  info="A unique handle for your profile URL. Your full name, company name, nickname"
                 />
-                <SelectListGroup
-                  placeholder="Status"
+                <TextFieldGroup
+                  placeholder="status"
                   name="status"
                   value={this.state.status}
                   onChange={this.onChange}
-                  options={options}
                   error={errors.status}
                 />
                 <TextFieldGroup
@@ -95,7 +91,6 @@ class AddUserDetails extends Component {
                   value={this.state.InstitutonId}
                   onChange={this.onChange}
                   error={errors.InstitutonId}
-                  info="Give your id given by the Institution"
                 />
 
                 <TextFieldGroup
@@ -104,25 +99,26 @@ class AddUserDetails extends Component {
                   value={this.state.location}
                   onChange={this.onChange}
                   error={errors.location}
-                  info="City or city & state suggested (eg. Bengaluru,Karnataka)"
                 />
-                <SelectListGroup
+
+                <TextFieldGroup
                   placeholder="branch"
                   name="branch"
                   value={this.state.branch}
                   onChange={this.onChange}
-                  options={options}
                   error={errors.branch}
-                  info="Branch of specialization"
                 />
-
-                <SelectListGroup
-                  placeholder="Designation"
+                <TextFieldGroup
+                  placeholder="designation"
                   name="des"
                   value={this.state.des}
                   onChange={this.onChange}
                   error={errors.des}
-                  info="Designation of occupation"
+                />
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn btn-info btn-block mt-4"
                 />
               </form>
             </div>

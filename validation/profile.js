@@ -6,9 +6,9 @@ module.exports = function validateProfileInput(data) {
 
   data.handle = !isEmpty(data.handle) ? data.handle : "";
   data.status = !isEmpty(data.status) ? data.status : "";
-  data.skills = !isEmpty(data.skills) ? data.skills : "";
-  data.title = !isEmpty(data.title) ? data.title : "";
-  data.company = !isEmpty(data.company) ? data.company : "";
+  data.InstitutionId = !isEmpty(data.InstitutionId) ? data.InstitutionId : "";
+  data.branch = !isEmpty(data.branch) ? data.branch : "";
+  data.des = !isEmpty(data.des) ? data.des : "";
   data.from = !isEmpty(data.from) ? data.from : "";
   data.school = !isEmpty(data.school) ? data.school : "";
   data.degree = !isEmpty(data.degree) ? data.degree : "";
@@ -27,16 +27,16 @@ module.exports = function validateProfileInput(data) {
     errors.status = "Status field is required";
   }
 
-  if (Validator.isEmpty(data.skills)) {
-    errors.skills = "Skills field is required";
+  if (Validator.isEmpty(data.InstitutionId)) {
+    errors.InstitutionId = "InstitutionId field is required";
   }
 
-  if (Validator.isEmpty(data.title)) {
-    errors.title = "Job title field is required";
+  if (Validator.isEmpty(data.branch)) {
+    errors.branch = "Branch is required";
   }
 
-  if (Validator.isEmpty(data.company)) {
-    errors.company = "Company field is required";
+  if (Validator.isEmpty(data.des)) {
+    errors.des = "Designation field is required";
   }
 
   if (Validator.isEmpty(data.from)) {

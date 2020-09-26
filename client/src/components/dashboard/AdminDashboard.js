@@ -2,14 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
+import { deleteAccount } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 
 class AdminDashboard extends Component {
-  componentDidMount() {
-    this.props.getCurrentProfile();
-  }
-
   onDeleteClick(e) {
     this.props.deleteAccount();
   }
@@ -78,6 +74,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
-  AdminDashboard
-);
+export default connect(mapStateToProps, { deleteAccount })(AdminDashboard);

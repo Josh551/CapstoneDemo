@@ -9,7 +9,7 @@ const ProfileSchema = new Schema({
   },
   handle: {
     type: String,
-    required: true,
+
     max: 40,
   },
   InstituionId: {
@@ -20,13 +20,12 @@ const ProfileSchema = new Schema({
   },
   status: {
     type: String,
-    required: true,
   },
   branch: {
-    type: [String],
+    type: String,
   },
   designation: {
-    type: [String],
+    type: String,
   },
   experience: [
     {
